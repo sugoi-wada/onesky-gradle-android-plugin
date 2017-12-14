@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly gradleApi()
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
