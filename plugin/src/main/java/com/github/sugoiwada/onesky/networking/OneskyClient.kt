@@ -6,6 +6,8 @@ import com.github.kittinunf.fuel.rx.rx_string
 import com.github.kittinunf.result.Result
 import com.github.sugoiwada.onesky.entity.LanguagesResponse
 import com.github.sugoiwada.onesky.entity.ListFileResponse
+import com.github.sugoiwada.onesky.entity.Listing
+import com.github.sugoiwada.onesky.entity.ListingResponse
 import io.reactivex.Single
 import java.io.File
 import java.security.MessageDigest
@@ -24,6 +26,13 @@ class OneskyClient(private val apiKey: String, private val apiSecret: String, pr
         params.add("locale" to locale)
 
         return "/translations".httpDownload(params, saveTo).rx_string()
+    }
+
+    fun listing(locale: String): Single<Listing> {
+        val params = authParams()
+        params.add("locale" to locale)
+
+        return "/translations/app-descriptions".httpGet(params).rx_object<ListingResponse>().map { it.get().data }
     }
 
     fun listFile() = "/files".httpGet(authParams()).rx_object<ListFileResponse>()
