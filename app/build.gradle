@@ -31,8 +31,8 @@ dependencies {
 }
 
 onesky {
-    apiKey "123"
-    apiSecret "123"
-    projectId 123
-    playProjectId 123
+    apiKey oneskyApiKey
+    apiSecret oneskyApiSecret
+    projectId 0
+    playProjectId 0
 }
