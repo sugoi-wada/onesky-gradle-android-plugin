@@ -39,7 +39,7 @@ uploadArchives {
             repository(url: uri('../repo'))
             pom.groupId = 'com.github.sugoiwada.onesky'
             pom.artifactId = 'onesky-gradle-plugin'
-            pom.version = '0.0.1-SNAPSHOT'
+            pom.version = '0.0.2-SNAPSHOT'
         }
     }
 }
