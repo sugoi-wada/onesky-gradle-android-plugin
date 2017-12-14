@@ -28,6 +28,13 @@ class OneskyClient(private val apiKey: String, private val apiSecret: String, pr
 
     fun listFile() = "/files".httpGet(authParams()).rx_object<ListFileResponse>()
 
+    fun upload(translationFile: File): Single<Result<String, FuelError>> {
+        val params = authParams()
+        params.add("file_format" to "ANDROID_XML")
+
+        return "/files".httpUpload(Method.POST, params, translationFile).rx_string()
+    }
+
     fun languages() = "/languages".httpGet(authParams()).rx_object<LanguagesResponse>()
 
     private fun authParams(): MutableList<Pair<String, String>> {
@@ -41,6 +48,10 @@ class OneskyClient(private val apiKey: String, private val apiSecret: String, pr
                 "timestamp" to timestamp
         )
     }
+}
+
+private fun String.httpUpload(method: Method = Method.POST, parameters: List<Pair<String, Any?>>? = null, file: File): Request {
+    return Fuel.upload(this, method, parameters).source { _, _ -> file }.name { "file" }
 }
 
 private fun String.httpDownload(parameter: List<Pair<String, Any?>>? = null, file: File): Request {
