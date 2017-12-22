@@ -21,7 +21,7 @@ open class DownloadListingTask : OneskyListingTask() {
                     oneskyClient.listing(lang.locale).map { lang to it }
                 }
                 .doOnNext { (lang, listing) ->
-                    val listingDir = lang.targetListingDir(project.playDir)
+                    val listingDir = lang.targetListingDir(project.playDir(flavor?.name))
                     listingDir.apply {
                         titleFile.writeText(listing.title)
                         shortDescFile.writeText(listing.shortDescription)

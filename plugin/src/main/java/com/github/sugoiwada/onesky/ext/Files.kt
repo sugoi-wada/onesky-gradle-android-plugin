@@ -1,5 +1,6 @@
 package com.github.sugoiwada.onesky.ext
 
+import com.android.builder.model.ProductFlavor
 import com.github.sugoiwada.onesky.entity.Language
 import org.gradle.api.Project
 import java.io.File
@@ -16,4 +17,4 @@ internal fun listingDirNameFromLanguage(lang: Language): String =
 
 internal val Project.resDir get() = File("${projectDir.absolutePath}/src/main/res")
 
-internal val Project.playDir get() = File("${projectDir.absolutePath}/src/main/play")
+internal fun Project.playDir(flavorName: String?) = File("${projectDir.absolutePath}/src/${flavorName ?: "main"}/play")

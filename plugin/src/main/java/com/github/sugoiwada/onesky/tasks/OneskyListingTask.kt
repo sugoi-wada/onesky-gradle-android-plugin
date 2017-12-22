@@ -1,13 +1,10 @@
 package com.github.sugoiwada.onesky.tasks
 
-import com.github.sugoiwada.onesky.OneskyExtension
+import com.android.builder.model.ProductFlavor
 import com.github.sugoiwada.onesky.networking.OneskyClient
-import org.gradle.api.DefaultTask
 
-open class OneskyListingTask : DefaultTask() {
-    private val oneskyExtension by lazy {
-        project.extensions.findByType(OneskyExtension::class.java)!!
-    }
+open class OneskyListingTask : OneskyBaseTask() {
+    var flavor: ProductFlavor? = null
 
     val oneskyClient by lazy {
         val apiKey = oneskyExtension.apiKey
