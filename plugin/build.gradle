@@ -41,7 +41,7 @@ uploadArchives {
             repository(url: uri('../repo'))
             pom.groupId = 'com.github.sugoiwada.onesky'
             pom.artifactId = 'onesky-gradle-plugin'
-            pom.version = '0.0.3-SNAPSHOT'
+            pom.version = '0.0.4-SNAPSHOT'
         }
     }
 }
@@ -49,7 +49,7 @@ uploadArchives {
 publish {
     groupId = 'com.github.sugoiwada.onesky'
     artifactId = 'onesky-gradle-plugin'
-    publishVersion = '0.0.2'
+    publishVersion = '0.0.3'
     desc = 'Gradle Android plugin for OneSky'
     website = 'https://github.com/sugoi-wada/onesky-gradle-android-plugin'
     licences = ['MIT']

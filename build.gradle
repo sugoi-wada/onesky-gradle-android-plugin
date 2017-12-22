@@ -18,7 +18,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${ver.kotlin}"
         classpath 'com.novoda:bintray-release:0.8.0'
-        classpath 'com.github.sugoiwada.onesky:onesky-gradle-plugin:0.0.3-SNAPSHOT'
+        classpath 'com.github.sugoiwada.onesky:onesky-gradle-plugin:0.0.4-SNAPSHOT'
     }
 }
 
