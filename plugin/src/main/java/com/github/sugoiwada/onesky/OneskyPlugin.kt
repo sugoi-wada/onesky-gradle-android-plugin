@@ -24,18 +24,19 @@ class OneskyPlugin : Plugin<Project> {
             var flavor: ProductFlavor? = null
             android.productFlavors.whenObjectAdded { flavor = it }
 
+            val downloadStringsTaskName = "downloadStrings"
+            val uploadStringsTaskName = "uploadStrings"
+
+            tasks.create(downloadStringsTaskName, DownloadStringsTask::class.java)
+            tasks.create(uploadStringsTaskName, UploadStringsTask::class.java)
+
             android.applicationVariants.whenObjectAdded { variant ->
                 if (variant.buildType.isDebuggable) {
                     project.logger.debug("Skipping debuggable build type ${variant.buildType.name}.")
                     return@whenObjectAdded
                 }
 
-                val downloadStringsTaskName = "downloadStrings"
-                val uploadStringsTaskName = "uploadStrings"
                 val downloadListingTaskName = "download${variant.name.capitalize()}Listing"
-
-                tasks.create(downloadStringsTaskName, DownloadStringsTask::class.java)
-                tasks.create(uploadStringsTaskName, UploadStringsTask::class.java)
                 tasks.create(downloadListingTaskName, DownloadListingTask::class.java).let { task ->
                     task.flavor = flavor
                 }
